@@ -9,6 +9,9 @@
 \usepackage{url}
 \usepackage{polyglossia}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
 
 % polyglossia
 \setmainlanguage{portuges}
@@ -67,135 +70,242 @@ unicamente necessário abrir o Euroscope como sempre, tendo em atenção que se 
     \item Microfone, auscultador e botão PTT (Push-To-Talk).
 \end{itemize}
 
+\chapter{Definições}
+
+\textit{Nota. — Em adição ao disposto neste capítulo, considere as definições em ICAO Doc. 4444,
+Chapter 1 Definitions.}
+
+\paragraph{} Quandos os seguintes termos ou acrónimos são usados neste documento têm o seguinte
+significado:
+
+\paragraph*{\textit{RIV.}}
+\label{def:riv}
+\hangindent=\parindent
+Região de Informação de Voo.
+
+\paragraph*{\textit{CTA.}}
+\label{def:cta}
+\hangindent=\parindent
+TODO
+
+\paragraph*{\textit{TAG(s).}}
+\label{def:tags}
+\hangindent=\parindent
+Etiqueta associada a um determinado avião visível no radar.
+\paragraph*{} \textit{Nota. — Ver capítulo \hyperref[cap:tags]{TAGs} para uma descrição detalhada das várias
+TAGs disponíveis.}
+
+\paragraph*{\textit{COPX.}}
+\label{def:copx}
+\hangindent=\parindent
+Ponto de coordenação, \textit{coordination point}, é utilizado para
+referência ao ponto para o qual a aeronava foi ou será instruída para seguir para.
+
+\paragraph*{\textit{TSSR.}}
+\label{def:tssr}
+\hangindent=\parindent
+Codigo transponder.
+
 \chapter{Vistas radar}
+\label{cap:vistas}
 
-\paragraph{} Estes encontram-se na pasta \path{%userprofile%\Documents\Euroscope\LPPC\ASR}. Cada
-\path{.asr} é uma vista de radar, com definições próprias (TAG activa, zoom e centro de
-visualização do radar, definições de \textit{Display Settings}).
+\paragraph{} Vistas radar são definidas em ficheiros \path{.asr} e definem, entre outros, o centro
+de radar, zoom, TAGs activas, e \textit{display settings}. Pode encontrar as várias configurações
+disponíveis em \path{%userprofile%\Documents\Euroscope\LPPC\ASR}.
 
-\paragraph{} Cada ficheiro tem o seu propósito, e dá para o descortinar no nome do mesmo. Por
-exemplo, \path{LPPC_CTR} será para controlar a posição de Lisboa Control, e começará com uma vista
-a abranger todo o espaço aéreo da RIV de Lisboa. Por outro lado, \path{LPPT_APP} focará unicamente
-a zona de aproximação da TMA de Lisboa, enquanto que, por exemplo, \path{LPPT_GND} mostrará, por
-default, o aeroporto de Lisboa.
+\paragraph{} No propósito deste documento, vistas radar são caracterizadas pela posição que as
+controla. Por exemplo a vista \path{LPPC_CTR} aplica-se à posição de Lisboa Control, e começará com
+uma vista a abranger todo o espaço aéreo da RIV de Lisboa. Por outro lado, \path{LPPT_GND}
+aplica-se, por defeito, ao aeroporto de Lisboa.
 
-\paragraph{} Pode-se abrir um novo ficheiro \path{.asr} indo a \textit{OPEN SCT} – \textit{Open},
-escolhendo de seguida o ficheiro correspondente à vista que se pretende abrir. É possível ter-se
-várias vistas abertas, e trocar de uma para a outra utilizando a tecla \textbf{F7}. É também
-possível criar em \textit{OTHER SET} – \textit{General Settings} – \textit{Page 2} atalhos para
-abrir vistas específicas, evitando assim ter de ir a \textit{OPEN SCT} – \textit{Open}.
+\paragraph{} Estão disponíveis, por ordem alfabética, as seguintes vistas:
+\begin{itemize}
+    \item \path{LPFR_APP}
+    \item \path{LPFR_GND}
+    \item \path{LPFR_TWR}
+    \item \path{LPMA_APP}
+    \item \path{LPMA_GND}
+    \item \path{LPMA_TWR}
+    \item \path{LPPC_CTR}
+    \item \path{LPPR_APP}
+    \item \path{LPPR_GND}
+    \item \path{LPPR_TWR}
+    \item \path{LPPT_APP}
+    \item \path{LPPT_GND}
+    \item \path{LPPT_TWR}
+\end{itemize}
 
-\paragraph{} Para, rapidamente, se voltar à vista inicial basta carregar simultaneamente nas teclas
-\textbf{CTRL} e \textbf{HOME}.
-
-\chapter{TAGs}
-
-\paragraph{} Para além da TAG default (\textit{Matias (built in)}) foram adicionadas mais quatro
-TAGs, cada uma com funções e características distintas. Esta quatro TAGs são réplicas das TAGs
-utilizadas no controlo real, com algumas adições para facilitar o controlo no Euroscope.
-
-\paragraph{} Nos sub-capítulos abaixo vai-se abordar estas quatro TAGs, e dizer em qual posição é
-recomendada a sua utilização – obviamente nada proíbe o CTA de utilizar outra TAG, ou de usar a TAG
-default, ou uma por ele próprio criada.
-
-\paragraph{} As informações presentes na TAG vão ser enumeradas da esquerda para a direita e de
-cima para baixo.
-
-\section{PT vACC – NORM}
-\label{sec:tag-norm}
-\paragraph{} Nesta TAG conseguimos, sem ser necessário colocar-lhe o rato em cima, o indicativo de
-chamada da aeronave, o controlador seguinte, a altitude actual, a altitude temporário (atribuída
-pelo CTA) e a velocidade (ground speed).
-
-\paragraph{} Colocando-se o rato por cima, abrindo portanto a versão detalhada da TAG é ainda
-adicionado o COPX para coordenar directos, a informação de rumo e velocidade instruída pelo CTA,
-caixa de texto livre, e o código transponder.
-
-\paragraph{}
-Carregando com o botão direito do rato na velocidade é aberto o Menu para atribuir velocidade em
-Mach.
-
-\paragraph{} Esta TAG é recomendada para ser utilizada pelas posições de Aproximação e Torre.
-
-\section{PT vACC – RDUC}
-\paragraph{} Esta TAG é em tudo igual à TAG \hyperref[sec:tag-norm]{PT vACC – NORM}, com a único
-excepção de a TAG quando não está detalhada (i.e., quando não se está a passar com o rato em cima
-dela) não mostrar a velocidade.
-
-\paragraph{} Esta TAG é recomendada para ser utilizado pelas posições de Centro.
-
-
-\section{PT vACC – GND RDR}
-\paragraph{} Esta TAG mostra na versão não detalhada unicamente o indicativo de chamada da
-aeronave.
-
-\paragraph{} Após duplo-clique na TAG (“abrindo” a TAG) consegue-se ver o tipo de aeronave passando
-com o rato por cima da mesma.
-
-\paragraph{} Esta TAG é recomendada para ser utilizado pelas posições de Ground.
-
-
-\section{PT vACC – XPDR}
-\paragraph{} Esta TAG na versão não detalhada é igual à TAG “PT vACC – NORM”, com a única diferença
-ser mostrar ainda o código transponder.
-
-\paragraph{} A versão detalhada é igual às TAGs “PT vACC – NORM” e “PT vACC – RDUC”.
-
-\paragraph{} Esta TAG geralmente não é utilizada, mas ficará ao critério do CTA dar-lhe uso se e
-quando o achar conveniente.
-
-
-\chapter{Display Settings}
-\paragraph{} Como explicado no capítulo das vistas radar cada uma destas vem com pré-definida com o
-que está visível. Porém, há bastantes mais coisas que poderão ser activadas caso o CTA assim o
-queira. Antes de mais, todas as secções a que este documento a partir de agora se vai referir
-encontram-se em “Display Settings” (para abrir: OTHER SET – Display Settings).
-
-\paragraph{} Nas primeiras 5 secções (VOR a Fixes) não há nenhum detalhe diferente do normal,
-portanto serão saltadas.
-
-\paragraph{} Porém, a secção “Stars” já contém algumas particularidades. Para além dos desenhos das
-aproximações que já conhecemos, pode-se aqui (des)activar o desenho de padrões de espera na vista
-radar. Por pré-definição estão visíveis 9 padrões de espera (ADSAD, EKMAR, RINOR, UMUPI em LPPT;
+Por pré-definição estão visíveis 9 padrões de espera (ADSAD, EKMAR, RINOR, UMUPI em LPPT;
 GIMAL em LPFR; DIVUT, RETMO em LPPR; ABUSU, FUSUL em LPMA).
 
-\paragraph{} Nas secções seguintes volta a não haver nada de novo que mereça referência, até
-chegarmos à secção “ARTCC boundary”. Aqui é possível activar o desenho das áreas restritas.. Por
-pré-definição estão todas desactivadas. Para além das áreas restritas é possível (des)activar o
-desenho dos diferentes sectores da RIV de Lisboa. No total há 6 (NORTH, CENTRE, SOUTH, DEMOS,
-VERAM, MADEIRA), sendo que cada um destes se divide em “Upper sector” e “Lower sector”. Para
-reduzir a quantidade de opções, os sectores DEMOS, VERAM e MADEIRA são só os sectores superiores,
-enquanto que os outros três sectores têm as duas opções. O sector inferior vai até altura do solo
-até nível de voo 245, enquanto que o superior começa em 245 e não tem limite superior. A única
-diferença entre os sectores inferiores e superiores existe na fronteira com Espanha. Abaixo de
-nível de voo 245 o tráfego sai de controlo Português assim que atravessar a fronteira entre os dois
-países, acima de 245 os limites entre as duas regiões são uma linha recta a Norte e outra a Oeste,
-que a Norte passa por, por exemplo, PINEK e ABUPI, e a Oeste por TOSDI e OGERO.
+Por pré-definição estão ligados os sectores LPPC East e LPPC West.
 
-\paragraph{} Para além destes sectores foram ainda criados os sectores LPPC East e LPPC West. Cada
-um deles junta três sectores (LPPC East aglomera os sectores DEMOS, VERAM e MADEIRA, enquanto que
-LPPC West contém os sectores NORTH, CENTRE e SOUTH [todos eles os sectores superiores]).
+\section{Navegação entre vistas}
 
-\paragraph{} A diferença entre activar os sectores East/West ao invés de cada sector individual é o
-primeiro ter unicamente as linhas de contorno da RIV, e não as linhas a dividirem cada sector na
-horizontal.
+\paragraph{} Para selecionar uma determinada vista, em \texttt{OPEN SCT - Open} selecione o ficheiro
+\texttt{asr} correspondente. Alternativamente é possível definir teclas de atalho para vistas
+específicas em \texttt{OTHER SET - General Settings - Page 2}.
 
-\paragraph{} Por pré-definição estão ligados os sectores LPPC East e LPPC West.
+\paragraph{} Para navegar entre vistas utilize a tecla \texttt{F7}. Para repor a condição da vista
+actual, por exemplo após mover o radar para focar um determinado avião de interesse, utilize a
+combinação de teclas \texttt{CTRL + HOME}.
 
-\paragraph{} Na secção seguinte, ARTCC low boundary, pode ser (des)activado o desenho da
-TMA/MRVA/etc. de cada aeroporto. Por pré-definição estão todos ligados. Nesta secção encontram-se
-também os túneis VFR na TMA de Lisboa, que incialmente estão todos desactivados.
+\chapter{TAGs}
+\label{cap:tags}
 
-\paragraph{} A secção GEO não contém nenhuma particularidade, portanto passemos à secção Free Text.
-Aqui há várias detalhes novos: “LPMA MRVA”, “LPPR MRVA”, LPPT MRVA” inserem na vista radar as
-altitudes de cada zona da MRVA. Em SCT2 é possível activar a identificação das áreas restritas. Por
-limitações do Euroscope foi necessário ficar numa sub-secção com um nome genérico. A parte
-“DynPoints” deverá ser ignorada e mantida desactivada. Estes pontos são utilizados para alguns
-desenhos, mas os pontos em si não nos serão úteis para controlar.
+\paragraph{} Apesar de existerem diversas configurações e formatos atribuídos a tags para
+representar informações diferentes sobre aeronaves, neste capítulo pertende-se abordar as de maior
+interesse às posições assumidas pelo controlador.
 
-\paragraph{} As altitudes das áreas restritas podem ser consultadas aqui:
-\url{https://www.nav.pt/CD/NAVProtectedData/eAIP/html/eAIP/LP-ENR-5.1-en-PT.html#ENR-5.1} (requer login
-no AIP da NAV).
+\paragraph{} As informações presentes em uma tag serão enumeradas da esquerda para a direita e de
+cima para baixo. Separadas em 3 classificações de formatos que mencionadas elas têm o seguinte
+significado:
 
+\paragraph*{\textit{Correlacionada.}}
+\hangindent=\parindent
+O formato de tag atribuída a uma aeronave com a qual o controlador ainda não interagiu.
+
+\paragraph*{\textit{Expandida.}}
+\hangindent=\parindent Não sendo necessárimente, pode considerar a tag atribuída a uma aeronave
+quando assumida pelo controlador.
+
+\paragraph*{\textit{Detalhada.}}
+\hangindent=\parindent
+A tag expandida quando sobreposta pelo cursor.
+
+\paragraph*{}
+\textit{Nota 1. — Todas as tags assumem que a aeronave está correlacionada com um plano de voo.}
+
+\paragraph*{}
+\textit{Nota 2. — As tags disponibilizadas intendem ser um ponto de partida para o controlador
+ajustar a sua preferência, se assim o desejar, os sendo o mais próximo das utilizadas pelo ACC
+de Lisboa a data que foi possível apurar.}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.37\textwidth]{figures/correlated-tag}
+            \caption{Uma tag correlacionada}
+            \label{fig:correlated}
+        \end{center}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{figures/expanded-tag}
+            \caption{Uma tag expandida}
+            \label{fig:expanded}
+        \end{center}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.66\textwidth]{figures/detailed-tag}
+            \caption{Uma tag detalhada}
+            \label{fig:detailed}
+        \end{center}
+    \end{subfigure}
+    \caption{Exemplos de tags}\label{fig:tag-examples}
+\end{figure}
+
+\section{Informação das TAGs}
+
+\paragraph*{Correlaciona} Em todas as famílias esta indica o código \textit{TSSR}, e altitude
+reportada pela aeronave. Sendo que não serve para propósito de assumir controlo da aeronave, é
+pretendido apenas dar indicação de posição espacial da aeronave.
+
+\subsection{PT vACC – NORM}
+\label{sec:tag-norm}
+
+\paragraph*{} Para utilização nas posições de Torre e Aproximação, garante que o controlador tem as
+informações necessárias para o correcto sequenciamento e espaçamento em fase final de aproximação.
+
+\paragraph*{Expandida} Indicativo de chamada, próximo controlador, altitude, altitude
+temporária (atribuída pelo CTA), e velocidade (\textit{ground speed}).
+
+\paragraph*{Detalhada} É adicionado o COPX para coordenar directos, a informação de rumo e
+velocidade instruída pelo CTA, caixa de texto livre, e o código transponder.
+
+\paragraph*{} Todos campos que identificam uma instrução dada ao piloto são possíveis de serem
+alterados directamente na tag clicando sobre os mesmos para revelar interface apropriada, por
+exemplo, clicando sobre a velocidade deverá revelar uma lista de velocidades em espaços
+apropriados.
+
+\subsection{PT vACC – RDUC}
+\label{sec:tag-rduc}
+
+\paragraph*{} Recomendada para as posições de centro.
+
+\paragraph*{Expandida e Detalhada} Semelhante a \hyperref[sec:tag-norm]{PT vACC – NORM} apenas não é mostrada
+informação de velocidade.
+
+\subsection{PT vACC – GND RDR}
+
+\paragraph*{} Recomendada para as posições de chão.
+
+\paragraph*{Expandida} Indicativo de chamada.
+
+\paragraph*{Detalhada} Indicativo de chamada e código de identificação do tipo de aeronave.
+
+\subsection{PT vACC – XPDR}
+
+\paragraph*{Expandida} Ver \hyperref[sec:tag-norm]{PT vACC – NORM}.
+
+\paragraph*{Detalhada} Semelhante a \hyperref[sec:tag-rduc]{PT vACC – RDUC} tem ainda informação do
+código TSSR.
+
+\paragraph{} \textit{Nota. — Não é utilizada por nenhuma posição, deverá ser utilizada por decisão do CTA.}
+
+\chapter{Display Settings}
+
+\paragraph*{} Este capítulo aborda as diferentes características do espaço aéreo disponíveis para
+serem adicionadas ao radar. As secções mencionadas referem-se aos vários nós na árvore do
+\textit{Display settings dialog} do Euroscope, em \texttt{OTHER SET – Display Settings}.
+
+\paragraph*{} \textit{Nota 1. — Este capítulo aborda as várias informações disponíveis de ter
+visíveis no radar, não sendo necessáriamente as que estarão activas. Para um detalhe das
+informações activas por defeito ver capítulo \hyperref[cap:vistas]{Vistas Radar}.}
+
+\paragraph*{} \textit{Nota 2. — Algumas das secções disponíveis são propositádamente ignoradas
+neste capítulo, apenas secções de especial interesse serão abordadas.}
+
+\section{Stars}
+
+\paragraph*{} Para além de poder activar o desenho das diferentes STARs para os vários aerportos,
+esta secção incluí ainda os padrões de espera.
+
+\section{ARTCC boundary}
+
+\paragraph*{} Incluí todos os limites laterais da RIV de Lisboa, sectores, e áreas restritas. Todos
+os sectores estão conforme designado pela NAV Portugal, prefazendo um total de 6 sectores
+diferentes, \textit{NORTH}, \textit{CENTER}, \textit{SOUTH}, \textit{DEMOS}, \textit{VERAM}, e
+\textit{MADEIRA}. Com excepção dos três últimos referidos, todos os sectores se subdividem em
+\textit{lower} (até FL245) e \textit{upper} (desde FL245).
+
+\paragraph*{} Para facilatar as várias posições que podem assumir os vários sectores, estão ainda
+disponíveis os pseudo setores \textit{LPPC East} (\textit{DEMOS}, \textit{VERAM}, e
+\textit{MADEIRA}) e \textit{LPPC West} (\textit{NORTH}, \textit{CENTER}, e \textit{SOUTH}).
+
+\paragraph*{} \textit{Nota. — Limites laterais dos lower e upper sectores, diferem apenas na
+fronteira com Espanha, onde os sectores lower seguem a fronteira terrestre os sectores upper
+extendem até aos pontos de coordenação com Espanha.}
+
+\section{ARTCC low boundary}
+
+\paragraph*{} Esta secção incluí as várias caracteristicas de interesse circundantes dos aeroportos
+sob controlo de trafego aéreo. TMA, MRVA, \textit{Tower} CTR, e rotas especiais VFR.
+
+\section{Free Text}
+
+\paragraph*{} Todos as caracteristicas do espaço referidas anteriormente podem ter o código de
+identificação das mesmas visíveis no radar bastante activar o correspondente nesta secção.
+
+\paragraph*{} A secção \textit{SCT2} incluí os códigos das aéras restritas.
+
+\paragraph*{} \textit{Nota. — A secção DynPoints deverá ser ignorada e mantida desactivada, serve
+apenas de suporte a outras caracteristicas do radar.}
 
 \end{document}
